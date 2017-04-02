@@ -6,6 +6,14 @@ public class FilmCD extends Item{
 	private Director director;
 	private ArrayList<Actor> listActor;
 	public FilmKind kind ;
+	
+	public FilmCD(String name , FilmKind kind , Price price , Director director , ArrayList<Actor> listActor){
+		this.setName(name);
+		this.setPrice(price);
+		this.setDirector(director);
+		this.setListActor(listActor);
+	}
+	
 	public Director getDirector() {
 		return director;
 	}

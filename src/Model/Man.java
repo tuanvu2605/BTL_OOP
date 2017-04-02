@@ -1,9 +1,28 @@
 package Model;
 
+enum Gender
+{
+	male ,
+	female
+}
+
 public class Man {
 private String name;
 private int age;
-private int gender;
+private Gender gender;
+
+public Man()
+{
+	
+}
+
+public Man( String name , int age , Gender gender)
+{
+	this.setName(name);
+	this.setAge(age);
+	this.setGender(gender);
+}
+
 public String getName() {
 	return name;
 }
@@ -16,10 +35,10 @@ public int getAge() {
 public void setAge(int age) {
 	this.age = age;
 }
-public int getGender() {
+public Gender getGender() {
 	return gender;
 }
-public void setGender(int gender) {
+public void setGender(Gender gender) {
 	this.gender = gender;
 }
 

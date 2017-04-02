@@ -1,14 +1,22 @@
 package Model;
 
-public class Kind {
-private String name;
-
-public String getName() {
-	return name;
+enum BookKind
+{
+	detective
 }
 
-public void setName(String name) {
-	this.name = name;
+enum FilmKind
+{
+	action
+	
+}
+enum MusicKind
+{
+	pop,
+	rock,
+	ballad
 }
 
-}
+
+
+
