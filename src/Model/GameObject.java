@@ -6,6 +6,7 @@
  * @author tuanvu
  *
  */
+package Model;
 public class GameObject {
 	
 	public String name;
