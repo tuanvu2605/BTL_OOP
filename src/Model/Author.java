@@ -1,5 +1,5 @@
 package Model;
 
-public class Author {
+public class Author extends Man{
 
 }

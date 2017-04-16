@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Map;
+
 public class Item {
  private String name;
  private Price price;
@@ -14,6 +16,7 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
+
 public String getName() {
 	return name;
 }
@@ -26,6 +29,32 @@ public Price getPrice() {
 public void setPrice(Price price) {
 	this.price = price;
 }
+
+//public void AddItem()
+//{
+//	
+//	// nhap kieu - book , film CD , Music CD
+//	
+//
+//	String type = new String();
+//	switch (type) {
+//	case "Book":
+//		// nhap thong tin sach
+//		String name =  new String();
+//		Price bookPrice = new Price();
+//		Author author = new Author();
+//		author.setAge(30);
+//		author.setName("KKK");
+//		author.setGender(Gender.male);
+//		Book newBook = new Book(name ,bookPrice, BookKind.detective ,author);
+//		
+//		break;
+//
+//	default:
+//		break;
+//	}
+//	
+//}
  
  
 }
