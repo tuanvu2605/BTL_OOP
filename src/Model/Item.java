@@ -3,6 +3,17 @@ package Model;
 public class Item {
  private String name;
  private Price price;
+ private int id;
+ 
+ public Item (){
+	 
+ }
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
 public String getName() {
 	return name;
 }

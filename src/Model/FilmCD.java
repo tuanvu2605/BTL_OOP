@@ -7,6 +7,11 @@ public class FilmCD extends Item{
 	private ArrayList<Actor> listActor;
 	public FilmKind kind ;
 	
+	public FilmCD()
+	{
+		
+	}
+	
 	public FilmCD(String name , FilmKind kind , Price price , Director director , ArrayList<Actor> listActor){
 		this.setName(name);
 		this.setPrice(price);

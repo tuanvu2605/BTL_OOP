@@ -5,6 +5,10 @@ public class Book extends Item{
 	public BookKind kind ;
 	private Author author;
 	
+	public Book()
+	{
+		
+	}
 	public Book(String name , Price price , BookKind kind , Author author)
 	{
 		this.setName(name);

@@ -4,6 +4,9 @@ public class MusicCD extends Item{
 	private Singer singer;
 	public MusicKind kind;
 	
+	public MusicCD(){
+		
+	}
 	
 	public MusicCD (String name , Price price , Singer singer , MusicKind kind)
 	{
