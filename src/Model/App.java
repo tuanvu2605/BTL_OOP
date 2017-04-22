@@ -12,6 +12,8 @@ public class App {
 			for (String string : args) {
 				
 			}
+			ProductManager manager = new ProductManager();
+			manager.addItem();
 			
 			
 	

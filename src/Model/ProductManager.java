@@ -7,24 +7,44 @@ public class ProductManager {
 private ArrayList<Item> storeHouse; 
 private Map<Integer, Integer> itemsWithCount;
 
-public void AddItem(){
-	String type = new String();
-	switch (type) {
-	case "book":
-		Book newBook = new Book();
-		checkItemAndAddCount(newBook);	
-		break;
-	case "filmcd":
-		FilmCD newFilmCD = new FilmCD();
-		checkItemAndAddCount(newFilmCD);
-		break;
-	case "musiccd":
-		MusicCD newMusicCD = new MusicCD();
-		checkItemAndAddCount(newMusicCD);
-		break;
-	default:
-		break;
-	}
+private ArrayList<Book> bookSelled;
+private Map<Integer, Integer> bookSelledItemCount;
+
+private ArrayList<FilmCD> filmCDSelled;
+private Map<Integer, Integer> filmCDSelledCount;
+
+private ArrayList<MusicCD> musicCDSelled;
+private Map<Integer, Integer> musicCDSelledCount;
+
+
+public void addItem(Item i){
+//	String type = new String();
+//	if (i.getClass().equals(Book.class))
+//	{
+//		type = "book";
+//	}else if (i.getClass().equals(FilmCD.class)){
+//		type = "filmcd";
+//	}else if (i.getClass().equals(MusicCD.class))
+//	{
+//		type = "musiccd";
+//	}
+//	switch (type) {
+//	case "book":
+//		Book newBook = new Book();
+//		checkItemAndAddCount(newBook);	
+//		break;
+//	case "filmcd":
+//		FilmCD newFilmCD = new FilmCD();
+//		checkItemAndAddCount(newFilmCD);
+//		break;
+//	case "musiccd":
+//		MusicCD newMusicCD = new MusicCD();
+//		checkItemAndAddCount(newMusicCD);
+//		break;
+//	default:
+//		break;
+//	}
+	checkItemAndAddCount(i);
 
 }
 
@@ -104,6 +124,67 @@ public ArrayList<Item> listItemWithClass(Class<?> cls){
 		
 	return arrList;
 	
+}
+public void sellItem(Item item,int count){
+	if(item.getClass().equals(Book.class))
+	{
+		if(itemsWithCount.get(item.getId())>= count){
+		decreseCount(item, count);
+		if (bookSelled.contains((Book)item)){
+			
+			Integer bookCount = bookSelledItemCount.get(item.getId());
+			bookCount = bookCount + count;
+			bookSelledItemCount.put(item.getId(), count);
+			
+		}
+		else
+		{
+			bookSelled.add((Book) item);
+			bookSelledItemCount.put(item.getId(), count);
+		}
+	}
+		else {
+			System.out.println("khong ban duoc");
+		}
+	}
+
+	else if(item.getClass().equals(FilmCD.class))
+		{
+			if(itemsWithCount.get(item.getId()) >= count)
+			{
+				decreseCount(item, count);
+				if(filmCDSelled.contains((FilmCD)item)){
+					Integer filmCDCount = filmCDSelledCount.get(item.getId());
+						}
+				else {
+					filmCDSelled.add((FilmCD)item);
+					filmCDSelledCount.put(item.getId(), count);
+				}
+			}
+			else{
+				System.out.println("khong ban duoc");
+		}
+	}
+	
+	else if (item.getClass().equals(MusicCD.class))
+		{
+			if(itemsWithCount.get(item.getId()) >= count){
+				decreseCount(item, count);
+				if(musicCDSelled.contains((MusicCD)item)){
+					Integer musicCDCount = musicCDSelledCount.get(item.getId());
+				}
+				else {
+					musicCDSelled.add((MusicCD)item);
+					musicCDSelledCount.put(item.getId(), count);
+					
+				}
+			}
+			else {
+				System.out.println("khong ban duoc");
+			}
+		}
+
+
 }
 
 }
