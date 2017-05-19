@@ -2,13 +2,13 @@ package Model;
 
 public class Price {
 	
-	public int in;
-	public int out;
+	public int priceIn;
+	public int priceOut;
 	
 	
-	public Price (int in , int out){
-		this.in = in;
-		this.out = out;	
+	public Price (int priceIn , int priceOut){
+		this.priceOut = priceOut;
+		this.priceIn = priceIn;	
 	}
 	
 

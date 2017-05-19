@@ -1,20 +1,32 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ProductManager {
-private ArrayList<Item> storeHouse; 
-private Map<Integer, Integer> itemsWithCount;
+public ArrayList<Item> storeHouse; 
+public Map<Integer, Integer> itemsWithCount;
 
-private ArrayList<Book> bookSelled;
-private Map<Integer, Integer> bookSelledItemCount;
+public ArrayList<Book> bookSelled;
+public Map<Integer, Integer> bookSelledItemCount;
 
-private ArrayList<FilmCD> filmCDSelled;
-private Map<Integer, Integer> filmCDSelledCount;
+public ArrayList<FilmCD> filmCDSelled;
+public Map<Integer, Integer> filmCDSelledCount;
 
-private ArrayList<MusicCD> musicCDSelled;
-private Map<Integer, Integer> musicCDSelledCount;
+public ArrayList<MusicCD> musicCDSelled;
+public Map<Integer, Integer> musicCDSelledCount;
+
+
+public ProductManager()
+{
+	storeHouse = new ArrayList<Item>();
+	itemsWithCount = new HashMap<Integer, Integer>();
+	
+	bookSelled = new ArrayList<Book>();
+	bookSelledItemCount = new HashMap<Integer, Integer>();
+	
+}
 
 
 public void addItem(Item i){
@@ -64,10 +76,13 @@ public void checkItemAndAddCount(Item item)
 public Item selectItemByID(int id)
 {
 
-	for(Item i : storeHouse){
-		if(i.getId()== id)
+	for(int i = 0 ; i < storeHouse.size();i++){
+		Item item = storeHouse.get(i);
+		
+		
+		if(item.getId()== id)
 		{
-			return i;
+			return item;
 		}
 	}
 	
