@@ -1,5 +1,7 @@
 package Model;
 
-public class Manager {
+public class Manager  extends Man{
+	
+	private MoneyManager moneyManager;
 
 }
