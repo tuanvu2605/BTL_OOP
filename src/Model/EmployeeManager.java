@@ -7,6 +7,8 @@ public class EmployeeManager {
 	private ArrayList<Employee> listEmployee;
 	private static EmployeeManager instance = null;
 	
+	final static int  EMPLOYEE_SALARY = 1000000 ;
+	
 	
 	
 	public static EmployeeManager getInstance() {
@@ -34,8 +36,21 @@ public class EmployeeManager {
 	{
 		if (this.listEmployee.contains(e))
 		{
-			this.listEmployee.remove(e);
+			e.setFired(true);
 		}
+	}
+	
+	public void paySalary(Employee e)
+	{
+		int pay = MoneyManager.getInstance().getInvestmentMoney() + EmployeeManager.EMPLOYEE_SALARY;
+		MoneyManager.getInstance().setInvestmentMoney(pay);
+		
+		PaySalaryEmployee p = new PaySalaryEmployee(e , EmployeeManager.EMPLOYEE_SALARY);
+		MoneyManager.getInstance().getListPaySalary().add(p);
+		
+		
+		
+		
 	}
 
 	

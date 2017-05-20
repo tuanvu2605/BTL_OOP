@@ -39,48 +39,111 @@ public ProductManager()
 }
 
 
-public void addItem(Item i){
-//	String type = new String();
-//	if (i.getClass().equals(Book.class))
-//	{
-//		type = "book";
-//	}else if (i.getClass().equals(FilmCD.class)){
-//		type = "filmcd";
-//	}else if (i.getClass().equals(MusicCD.class))
-//	{
-//		type = "musiccd";
-//	}
-//	switch (type) {
-//	case "book":
-//		Book newBook = new Book();
-//		checkItemAndAddCount(newBook);	
-//		break;
-//	case "filmcd":
-//		FilmCD newFilmCD = new FilmCD();
-//		checkItemAndAddCount(newFilmCD);
-//		break;
-//	case "musiccd":
-//		MusicCD newMusicCD = new MusicCD();
-//		checkItemAndAddCount(newMusicCD);
-//		break;
-//	default:
-//		break;
-//	}
-	checkItemAndAddCount(i);
+
+
+
+public ArrayList<Item> getStoreHouse() {
+	return storeHouse;
+}
+
+
+public void setStoreHouse(ArrayList<Item> storeHouse) {
+	this.storeHouse = storeHouse;
+}
+
+
+public Map<Integer, Integer> getItemsWithCount() {
+	return itemsWithCount;
+}
+
+
+public void setItemsWithCount(Map<Integer, Integer> itemsWithCount) {
+	this.itemsWithCount = itemsWithCount;
+}
+
+
+public ArrayList<Book> getBookSelled() {
+	return bookSelled;
+}
+
+
+public void setBookSelled(ArrayList<Book> bookSelled) {
+	this.bookSelled = bookSelled;
+}
+
+
+public Map<Integer, Integer> getBookSelledItemCount() {
+	return bookSelledItemCount;
+}
+
+
+public void setBookSelledItemCount(Map<Integer, Integer> bookSelledItemCount) {
+	this.bookSelledItemCount = bookSelledItemCount;
+}
+
+
+public ArrayList<FilmCD> getFilmCDSelled() {
+	return filmCDSelled;
+}
+
+
+public void setFilmCDSelled(ArrayList<FilmCD> filmCDSelled) {
+	this.filmCDSelled = filmCDSelled;
+}
+
+
+public Map<Integer, Integer> getFilmCDSelledCount() {
+	return filmCDSelledCount;
+}
+
+
+public void setFilmCDSelledCount(Map<Integer, Integer> filmCDSelledCount) {
+	this.filmCDSelledCount = filmCDSelledCount;
+}
+
+
+public ArrayList<MusicCD> getMusicCDSelled() {
+	return musicCDSelled;
+}
+
+
+public void setMusicCDSelled(ArrayList<MusicCD> musicCDSelled) {
+	this.musicCDSelled = musicCDSelled;
+}
+
+
+public Map<Integer, Integer> getMusicCDSelledCount() {
+	return musicCDSelledCount;
+}
+
+
+public void setMusicCDSelledCount(Map<Integer, Integer> musicCDSelledCount) {
+	this.musicCDSelledCount = musicCDSelledCount;
+}
+
+
+public void addItem(Item i ,  int count ){
+
+	checkItemAndAddCount(i , count);
 
 }
 
-public void checkItemAndAddCount(Item item)
+public void checkItemAndAddCount(Item item , int count)
 {
 	if(!storeHouse.contains(item)){
 		this.storeHouse.add(item);
-		itemsWithCount.put(item.getId(), 1);
+		itemsWithCount.put(item.getId(), count);
 	}else
 	{
 		Integer itemCount = itemsWithCount.get(item.getId());
-		itemCount = itemCount+1;
+		itemCount = itemCount+count;
 		itemsWithCount.put(item.getId(),itemCount);
 	}
+	
+	int pay = MoneyManager.getInstance().getInvestmentMoney() + item.getPrice().priceIn*count;
+	MoneyManager.getInstance().setInvestmentMoney(pay);
+	
+	
 }
 
 public Item selectItemByID(int id)
@@ -151,6 +214,13 @@ public ArrayList<Item> listItemWithClass(Class<?> cls){
 	
 }
 public void sellItem(Item item,int count){
+	
+	int pay = MoneyManager.getInstance().getRevenue() + item.getPrice().priceOut*count;
+	MoneyManager.getInstance().setRevenue(pay);
+	SellItem sellItem = new SellItem(item , count , System.currentTimeMillis());
+	MoneyManager.getInstance().getListSellItem().add(sellItem);
+	
+	
 	if(item.getClass().equals(Book.class))
 	{
 		if(itemsWithCount.get(item.getId())>= count){
