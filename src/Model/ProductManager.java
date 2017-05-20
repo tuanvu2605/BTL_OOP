@@ -5,17 +5,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProductManager {
-public ArrayList<Item> storeHouse; 
-public Map<Integer, Integer> itemsWithCount;
+	
+private static ProductManager instance = null;	
+	
+private ArrayList<Item> storeHouse; 
+private Map<Integer, Integer> itemsWithCount;
 
-public ArrayList<Book> bookSelled;
-public Map<Integer, Integer> bookSelledItemCount;
+private ArrayList<Book> bookSelled;
+private Map<Integer, Integer> bookSelledItemCount;
 
-public ArrayList<FilmCD> filmCDSelled;
-public Map<Integer, Integer> filmCDSelledCount;
+private ArrayList<FilmCD> filmCDSelled;
+private Map<Integer, Integer> filmCDSelledCount;
 
-public ArrayList<MusicCD> musicCDSelled;
-public Map<Integer, Integer> musicCDSelledCount;
+private ArrayList<MusicCD> musicCDSelled;
+private Map<Integer, Integer> musicCDSelledCount;
+
+public static ProductManager getInstance() {
+    if(instance == null) {
+       instance = new ProductManager();
+    }
+    return instance;
+ }
 
 
 public ProductManager()
